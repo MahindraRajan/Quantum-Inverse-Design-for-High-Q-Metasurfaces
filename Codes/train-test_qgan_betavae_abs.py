@@ -17,7 +17,7 @@ from models import BetaVAE, Discriminator, QuantumGenerator
 def train_qgan(generator, discriminator, betavae, excelDataTensor, dataloader, optimizerG, optimizerD, criterion, num_epochs):
     generator.train()
     discriminator.train()
-    betavae.eval()  # Pretrained QVAE in eval mode
+    betavae.eval()  # Pretrained VAE in eval mode
     x = 0
     noise = torch.Tensor()
     noise2 = torch.Tensor()

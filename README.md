@@ -13,6 +13,20 @@
 
 ---
 
+## Training Data
+
+The absorption spectra used in this project are **taken from the dataset provided by the [UCLA Raman Lab – Multiclass Metasurface Inverse Design project](https://github.com/Raman-Lab-UCLA/Multiclass_Metasurface_InverseDesign/tree/main/Training_Data)**.  
+
+- The dataset (`absorptionData_HybridGAN.csv`) contains absorption spectra for multiple structures over the wavelength range **4–12 μm**.
+- Each row corresponds to a unique **structure ID** (`Var1_1`) followed by spectral values (`Var1_2 … Var1_801`).
+- The spectra are converted into **frequency domain (THz)** for Fano lineshape fitting using [**`fitting.py`**](https://github.com/MahindraRajan/Physics-Informed-QGAN/blob/main/code/fitting.py).
+
+```
+C. Yeung, et al. Global Inverse Design across Multiple Photonic Structure Classes Using Generative Deep Learning. Advanced Optical Materials, 2021.
+```
+
+---
+
 ## 🧠 Method (LaSt-QGAN)
 - **Encoder:** Pretrained VAE (β-VAE / IWAE) compresses metasurface images (64×64×3) into latent features.  
 - **Quantum Generator:** Style-conditioned variational quantum circuits (PennyLane) take latent noise + conditional vector (Fano/Lorentzian params) to synthesize features.  
@@ -37,7 +51,9 @@
 ## 🔬 Citation
 If this work helps your research, please cite the corresponding paper (preprint/manuscript):
 
+```
 Warrier, S. R., & Dontabhaktuni, J. (2025). *Hybrid Quantum-Classical Inverse Design of Metasurfaces for Tailored Narrow Band Absorption*. arXiv preprint, arXiv:2507.18127 ([arxiv](https://arxiv.org/abs/2507.18127))
+```
 
 ```bibtex
 @article{warrier2025hybrid,

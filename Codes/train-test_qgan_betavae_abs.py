@@ -31,7 +31,7 @@ def train_qgan(generator, discriminator, betavae, excelDataTensor, dataloader, o
             b_size = real_cpu.size(0)
             label = torch.full((b_size,), real_label, device=device)
 
-            with torch.no_grad():  # Use the pretrained QVAE
+            with torch.no_grad():  # Use the pretrained VAE
                 recon_real, mu, logvar, latent_real = betavae(real_cpu)
 
             noise2 = torch.empty(0, label_dims).to(device)
@@ -181,7 +181,7 @@ if __name__ == '__main__':
     # Apply the weights_init function to randomly initialize all weights
     discriminator.apply(weights_init)
 
-    # Load the pretrained QVAE from a specific directory
+    # Load the pretrained VAE from a specific directory
     betavae = BetaVAE(n_qubits = n_qubits, nc = nc, beta = beta).to(device)
     betavae.load_state_dict(torch.load('C:/.../pretrained_beta_vae_abs.pth'))
 

@@ -51,9 +51,8 @@ C. Yeung, et al. Global Inverse Design across Multiple Photonic Structure Classe
 ## 🔬 Citation
 If this work helps your research, please cite the corresponding paper (preprint/manuscript):
 
-```
-Warrier, S. R., & Dontabhaktuni, J. (2025). **Hybrid Quantum-Classical Inverse Design of Metasurfaces for Tailored Narrow Band Absorption**. arXiv preprint, arXiv:2507.18127 ([arxiv](https://arxiv.org/abs/2507.18127))
-```
+Warrier, S. R., & Dontabhaktuni, J. (2025). *Hybrid Quantum-Classical Inverse Design of Metasurfaces for Tailored Narrow Band Absorption*. arXiv preprint, arXiv:2507.18127 ([arxiv](https://arxiv.org/abs/2507.18127))
+
 
 ```bibtex
 @article{warrier2025hybrid,

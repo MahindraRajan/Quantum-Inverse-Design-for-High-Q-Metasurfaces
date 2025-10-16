@@ -59,7 +59,7 @@ if __name__ == '__main__':
     # Train the Beta-VAE
     train_beta_vae(betavae, dataloader, beta, optimizer, num_epochs, device)
 
-    # Save the pretrained Disentangled Beta-VAE model
+    # Save the pretrained Beta-VAE model
     torch.save(betavae.state_dict(), 'C:/.../pretrained_beta_vae_abs.pth')
 
     # Plot the loss values

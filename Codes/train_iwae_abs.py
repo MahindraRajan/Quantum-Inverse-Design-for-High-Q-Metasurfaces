@@ -5,7 +5,7 @@ import torchvision.datasets as dset
 import matplotlib.pyplot as plt
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
-from models.models import IWAE
+from models import IWAE
 
 # Training the IWAE
 def train_iwae(iwae, dataloader, beta, optimizer, num_epochs, num_samples, device):
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     # Data preparation (Adjust the path as needed)
-    img_path = 'C:/.../Images'
+    img_path = 'C:/.../Images/'
     
     dataset = dset.ImageFolder(root=img_path,
                                transform=transforms.Compose([
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     train_iwae(iwae, dataloader, beta, optimizer, num_epochs, num_samples, device)
 
     # Save the pretrained IWAE model
-    torch.save(iwae.state_dict(), 'pretrained_iwae.pth')
+    torch.save(iwae.state_dict(), 'C:/.../pretrained_iwae.pth')
 
     # Plot the loss values
     plt.figure(figsize=(10, 6))

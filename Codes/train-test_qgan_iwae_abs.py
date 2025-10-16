@@ -154,7 +154,7 @@ if __name__ == '__main__':
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     # Data preparation (Adjust the path as needed)
-    img_path = 'C:/.../Training_Data/'
+    img_path = 'C:/.../Images/'
     spectra_path = 'C:/.../fano_fit_results.csv'
 
     excelData, excelDataSpectra, excelDataTensor = Excel_Tensor(spectra_path)
@@ -182,7 +182,7 @@ if __name__ == '__main__':
     # Apply the weights_init function to randomly initialize all weights
     discriminator.apply(weights_init)
 
-    # Load the pretrained QVAE from a specific directory
+    # Load the pretrained IWAE from a specific directory
     iwae = IWAE(n_qubits = n_qubits, nc = nc, beta = beta, num_samples = num_samples).to(device)
     iwae.load_state_dict(torch.load('C:/.../pretrained_iwae_abs.pth'))
 

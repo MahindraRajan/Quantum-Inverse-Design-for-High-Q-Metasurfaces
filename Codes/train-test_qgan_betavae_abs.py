@@ -11,9 +11,9 @@ import torchvision.utils as vutils
 import pandas as pd
 import random
 import time
-from models.models import BetaVAE, Discriminator, QuantumGenerator
+from models import BetaVAE, Discriminator, QuantumGenerator
 
-# Load the pretrained QVAE and train the QGAN
+# Load the pretrained VAE and train the QGAN
 def train_qgan(generator, discriminator, betavae, excelDataTensor, dataloader, optimizerG, optimizerD, criterion, num_epochs):
     generator.train()
     discriminator.train()
@@ -152,8 +152,8 @@ if __name__ == '__main__':
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     # Data preparation (Adjust the path as needed)
-    img_path = '/dgxb_home/se21pphy004/Multiclass_Metasurface/Training_Data/'
-    spectra_path = '/dgxb_home/se21pphy004/Multiclass_Metasurface/Training_Data/absorptionData_HybridGAN_1.csv'
+    img_path = 'C:/.../Images/'
+    spectra_path = 'C:/.../fano_fit_results.csv'
 
     excelData, excelDataSpectra, excelDataTensor = Excel_Tensor(spectra_path)
     
@@ -183,7 +183,7 @@ if __name__ == '__main__':
 
     # Load the pretrained QVAE from a specific directory
     betavae = BetaVAE(n_qubits = n_qubits, nc = nc, beta = beta).to(device)
-    betavae.load_state_dict(torch.load('pretrained_beta_vae_abs.pth'))
+    betavae.load_state_dict(torch.load('C:/.../pretrained_beta_vae_abs.pth'))
 
     # Define optimizers
     optimizerG = optim.Adam(generator.parameters(), lr=lrG, betas=(beta1, beta2))
@@ -203,13 +203,13 @@ if __name__ == '__main__':
     print('Total Time Lapsed = %s Hours' % run_time)
     
     # Save the final models
-    torch.save(generator.state_dict(), 'final_generator_qgan_betavae_abs.pth')
-    torch.save(discriminator.state_dict(), 'final_discriminator_qgan_betavae_abs.pth')
+    torch.save(generator.state_dict(), 'C:/.../final_generator_qgan_betavae_abs.pth')
+    torch.save(discriminator.state_dict(), 'C:/.../final_discriminator_qgan_betavae_abs.pth')
 
     # Test the generator using testTensor
     fixed_batch_size = 100
     testTensor = torch.Tensor()
-    generator.load_state_dict(torch.load('final_generator_qgan_betavae_abs.pth'))
+    generator.load_state_dict(torch.load('C:/.../final_generator_qgan_betavae_abs.pth'))
 
     for i in range(fixed_batch_size):
         index = i * int(np.floor(len(excelDataSpectra) / fixed_batch_size))

@@ -55,12 +55,13 @@ Warrier, S. R., & Dontabhaktuni, J. (2025). *Hybrid Quantum-Classical Inverse De
 
 
 ```bibtex
-@article{warrier2025hybrid,
-  title={Hybrid Quantum-Classical Inverse Design of Metasurfaces for Tailored Narrow Band Absorption},
-  author={Warrier, Sreeraj Rajan and Dontabhaktuni, J.},
-  journal={arXiv preprint arXiv:2507.18127},
-  year={2025},
-  url={https://arxiv.org/abs/2507.18127}
+@misc{warrier2025hybrid,
+  title = {Hybrid Quantum-Classical Inverse Design of Metasurfaces for Tailored Narrow Band Absorption},
+  author = {Warrier, Sreeraj Rajan and Dontabhaktuni, J.},
+  arxivPrefix = {arXiv},
+  year = {2025},
+  eprint = {2507.18132},
+  url = {https://arxiv.org/abs/2507.18127}
 }
 ```
 

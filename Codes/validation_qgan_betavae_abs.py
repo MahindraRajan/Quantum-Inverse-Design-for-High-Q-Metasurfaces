@@ -19,11 +19,11 @@ import pennylane as qml
 from models.models import BetaVAE, QuantumGenerator
 
 #Location of Saved Generator and beta-VAE
-genDir = "/dgxb_home/se21pphy004/Multiclass_Metasurface/final_generator_qgan_betavae_abs.pth"
-vaeDir = "/dgxb_home/se21pphy004/Multiclass_Metasurface/pretrained_beta_vae_abs.pth"
+genDir = "C:/.../final_generator_qgan_betavae_abs.pth"
+vaeDir = "C:/.../pretrained_beta_vae_abs.pth"
 
 #Location of Training Data
-spectra_path = '/dgxb_home/se21pphy004/Multiclass_Metasurface/Training_Data/absorptionData_HybridGAN_1.csv'
+spectra_path = 'C:/.../fano_fit_results.csv'
 
 # Define the device
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -145,7 +145,7 @@ indices = [0, 1280, 1290, 2016, 2159, 5308, 8936, 10680, 17000]
 # indices = []
 # for index in range(0,63):
 #     indices.append(1 * index)
-results_folder = os.path.dirname(os.path.realpath('/dgxb_home/se21pphy004/Multiclass_Metasurface/'))
+results_folder = os.path.dirname(os.path.realpath('C:/.../Results/'))
 Path(results_folder+ '/Results_qgan_betavae_abs').mkdir(parents=True, exist_ok=True) #ref: https://stackoverflow.com/questions/273192/how-can-i-safely-create-a-nested-directory-in-python
 file = open(results_folder + '/Results_qgan_betavae_abs/properties.txt',"w")
 file.write("Index FakePlasma/Index RealPlasma/Index FakeThickness RealThickness Class(MIM=0/DM=1)")

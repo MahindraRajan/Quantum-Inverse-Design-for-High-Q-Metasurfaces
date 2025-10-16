@@ -5,9 +5,9 @@ import torchvision.datasets as dset
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
-from models.models import BetaVAE
+from models import BetaVAE
 
-# Training the Disentangled Beta-VAE
+# Training the Beta-VAE
 def train_beta_vae(betavae, dataloader, beta, optimizer, num_epochs, device):
     betavae.train()
     for epoch in range(num_epochs):
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     # Data preparation (Adjust the path as needed)
-    img_path = '/dgxb_home/se21pphy004/Multiclass_Metasurface/Training_Data/'
+    img_path = 'C:/.../Images/'
     
     dataset = dset.ImageFolder(root=img_path,
                                transform=transforms.Compose([
@@ -52,15 +52,15 @@ if __name__ == '__main__':
     
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-    # Initialize Disentangled Beta-VAE
+    # Initialize Beta-VAE
     betavae = BetaVAE(n_qubits = latent_dim, nc = nc, beta = beta).to(device)
     optimizer = optim.Adam(betavae.parameters(), lr=lr_vae, betas=(beta1, beta2))
 
-    # Train the Disentangled Beta-VAE
+    # Train the Beta-VAE
     train_beta_vae(betavae, dataloader, beta, optimizer, num_epochs, device)
 
     # Save the pretrained Disentangled Beta-VAE model
-    torch.save(betavae.state_dict(), 'pretrained_beta_vae_abs.pth')
+    torch.save(betavae.state_dict(), 'C:/.../pretrained_beta_vae_abs.pth')
 
     # Plot the loss values
     plt.figure(figsize=(10, 6))
